@@ -1,4 +1,4 @@
-module github.com/namikazebadri/gin-docker-compose-with-postgresql-and-redis
+module github.com/namikazebadri/gin-docker-compose-for-local-development
 
 go 1.17
 
