@@ -1,0 +1,29 @@
+version: '3.8'
+
+services:
+  app:
+    container_name: app
+    stdin_open: true
+    tty: true
+    build:
+      context: .
+      dockerfile: Dockerfile.local
+    networks:
+      serviceNetwork:
+        ipv4_address: 192.168.2.2
+    volumes:
+      - ./:/app
+    ports:
+      - "8080:8080"
+    restart: unless-stopped
+    env_file: .env
+
+# Network definition
+networks:
+  serviceNetwork:
+    name: serviceNetwork
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 192.168.2.0/24
